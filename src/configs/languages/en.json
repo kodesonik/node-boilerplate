@@ -1,0 +1,62 @@
+{
+  "error": {
+    "internal": "Internal server error",
+    "fourOhFour": "Not found",
+    "invalid": "Invalid :parameter",
+    "missing": "Missing :parameter",
+    "unauthorized": "you have not the accreditation to make this request",
+    "expired": ":parameter expired",
+    "alreadyDone": "Operation you are trying to make is already done since :date"
+  },
+  "response": {
+    "add": "Added successfully!",
+    "edit": "Updated successfully!",
+    "remove": "Removed successfully!",
+    "restore": "Restored successfully!"
+  },
+  "auth": {
+    "confirmationMail": {
+      "salutation": " Hi :name",
+      "message": "Click the big button below to activate your account.",
+      "button": "Activate",
+      "sender": "Tech Team",
+      "thanks": "Thanks"
+    },
+    "confirmationPage": {
+      "salutation": " Hi :name",
+      "message": "Your email is verified successfully.",
+      "alreadySentMessage": "Your email is already validate since :emailVerifiedAt",
+      "sender": "Tech Team",
+      "thanks": "Thanks"
+    },
+    "resetPassword": {
+      "salutation": " Hi :name",
+      "message": "Click the big button below to reset your password.",
+      "button": "Reset password",
+      "sender": "Tech Team",
+      "thanks": "Thanks"
+    },
+    "resetPasswordPage": {
+      "salutation": " Hi :name",
+      "message": "Your password is reset successfully.",
+      "alreadySentMessage": "Your password is already reset since :emailVerifiedAt",
+      "sender": "Tech Team",
+      "thanks": "Thanks"
+    },
+    "message": {
+      "signinWithPhone": "A 6-digit code has been sent to your phone number :phoneNumber",
+      "otpVerified": "Your phone number has been verified successfully.",
+      "profileUpdated": "Your profile have been updated successfully.",
+      "login": "You are logged in successfully",
+      "register": "A confirmation link has been send on your email :email",
+      "logout": "You are logged out successfully!",
+      "changePassword": "Your password has been changed successfully",
+      "updateProfile": "Your profile has been updated successfully",
+      "updateAvatar": "Your avatar has been updated successfully",
+      "recoverPassword": "The password reset link has been send on your email :email",
+      "changeEmail": "You are email has been changed successfully. Check you new email box :email to confirm your email",
+      "changePhoneNumber": "You are phoneNumber has been changed successfully. an Otp code has been send on  :phoneNumber",
+      "removeAccount": "Your account has been deleted successfully"
+    }
+  }
+}

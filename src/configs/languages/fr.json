@@ -1,0 +1,62 @@
+{
+    "error": {
+        "internal": "Erreur interne du serveur.",
+        "fourOhFour": "Pas trouvé.",
+        "invalid": ":parameter Invalide.",
+        "missing": ":parameter manquant",
+        "unauthorized": "vous n'avez pas l'accréditation pour effectuer cette opération",
+        "expired": ":parameter expiré",
+        "alreadyDone": "L'opération que vous essayez d'effectuer a été déjà effectuée depuis :date"
+    },
+    "response": {
+        "add": "Ajouté avec succès!",
+        "edit": "Modifié avec succès!",
+        "remove": "Supprimé avec succès!",
+        "restore": "Restauré avec succès!"
+    },
+    "auth": {
+        "confirmationMail": {
+            "salutation": "Salut :name",
+            "message": "Veuillez cliquer sur le bouton ci-ddesous pour confirmer votre email.",
+            "button": "Confirmer mon email",
+            "sender": "Equipe Technique",
+            "thanks": "Merci"
+        },
+        "confirmationPage": {
+            "salutation": "Salut :name",
+            "message": "Votre email est vérifié avec succès.",
+            "alreadySentMessage": "Votre email est déjà validé depuis :emailVerifiedAt",
+            "sender": "Equipe Technique",
+            "thanks": "Merci"
+        },
+        "resetPassword": {
+            "salutation": "Salut :name",
+            "message": "Veuillez cliquer sur le lien pour renitialiser votre mot de passe.",
+            "button": "Renitialiser mon mot de passe",
+            "sender": "Equipe Technique",
+            "thanks": "Merci"
+        },
+        "resetPasswordPage": {
+            "salutation": " Hi :name",
+            "message": "Your password is reset successfully.",
+            "alreadySentMessage": "Votre mot de passe est déjà renitialisé :emailVerifiedAt",
+            "sender": "Equipe Technique",
+            "thanks": "Merci"
+        },
+        "message": {
+            "signinWithPhone": "Un code à 6 chiffres a été envoyé à votre numéro de téléphone :phoneNumber",
+            "otpVerified": "Votre numéro de téléphone a été vérifié avec succès.",
+            "profileUpdated": "Votre profil a été mis à jour avec succès.",
+            "login": "Vous êtes connecté avec succès",
+            "register": "Un lien de confirmation a été envoyé sur votre email :email",
+            "logout": "Vous êtes déconnecté avec succès",
+            "changePassword": "Votre mot de passe a été changé avec succès",
+            "updateProfile": "Votre profil a été mis à jour avec succés",
+            "updateAvatar": "Votre avatar a été mis à jour avec succès",
+            "recoverPassword": "Le lien de réinitialisation du mot de passe a été envoyé sur votre email :email",
+            "changeEmail": "Votre adresse e-mail a été modifiée avec succès. Vérifiez votre nouvelle boîte e-mail :email pour confirmer votre e-mail",
+            "changePhoneNumber": "Votre numéro de téléphone a été modifié avec succès. un code OTP a été envoyé sur le  :phoneNumber",
+            "removeAccount": "Votre compte a été supprimé avec succès."
+        }
+    }
+}

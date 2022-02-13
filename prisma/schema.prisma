@@ -1,0 +1,250 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+    previewFeatures = ["interactiveTransactions"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Country {
+  id Int @id @default(autoincrement())
+  name String
+  language String
+  currency String
+  phoneCode String
+  longitude Float
+  latitude Float
+  flag String
+  createdAt DateTime @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
+  users User[]
+}
+
+
+model User {
+  id Int @id @default(autoincrement())
+  countryId Int?
+  avatar String?
+  email String  @unique
+  phoneNumber String @unique
+  emailVerifiedAt DateTime?
+  phoneNumberVerifiedAt DateTime?
+  firstName  String
+  lastName String
+  birthDay DateTime?
+  status Int @default(1)
+  role String
+  language String
+  idCard String?
+  driverLicence String?
+  password String
+  rating Float?
+  createdAt DateTime @default(now())
+  blockedAt DateTime?
+  updatedAt DateTime? @updatedAt
+  profileCompletedAt DateTime?
+  deletedAt DateTime?
+  deletionReport String?
+  operations Operation[]
+  preferences Configuration[]
+  trips Trip[]
+  travels Travel[]
+  vehicles Vehicle[]
+  historics Historic[]
+  sendedNotifications Publication[]
+  receivedNotifications Notification[]
+  wallets Wallet[]
+  devices Device[]
+  country   Country?   @relation(fields: [countryId], references: [id])
+}
+
+model Device {
+    id String @id
+    userId Int
+    platform String
+    token String
+    createdAt DateTime @default(now())
+    updatedAt DateTime? @updatedAt  
+    deletedAt DateTime?
+    user   User   @relation(fields: [userId], references: [id])
+}
+
+model Wallet {
+  id Int @id @default(autoincrement())
+  type String
+  userId Int
+  currency String
+  balance Int @default(0)
+  user   User   @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
+}
+
+model Preference {
+  id     Int @id @default(autoincrement())
+  title String
+  description String
+  createdAt DateTime @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
+  users Configuration[]
+}
+
+model Configuration {
+  userId     Int
+  preferenceId Int
+  value Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime? @updatedAt
+  user   User   @relation(fields: [userId], references: [id])
+  preference   Preference   @relation(fields: [preferenceId], references: [id])
+  @@id([userId, preferenceId])
+}
+
+model VehicleType {
+  name String @id
+  Description String
+  createdAt DateTime @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
+  vehicles Vehicle[]
+}
+
+model Vehicle {
+  id    BigInt @id @default(autoincrement())
+  userId Int
+  type String
+  color String
+  numberplate String
+  registrationDoc String
+  createdAt DateTime @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
+  trip Trip[]
+  user   User   @relation(fields: [userId], references: [id])
+  vehicles   VehicleType   @relation(fields: [type], references: [name])
+}
+
+model Trip {
+    id    BigInt @id @default(autoincrement())
+    userId     Int
+    vehiculeId BigInt
+    places Int
+    status Int
+    createdAt DateTime @default(now())
+    startedAt DateTime?
+    finishedAt DateTime?
+    stops Stop[]
+    routes Route[]
+    user   User   @relation(fields: [userId], references: [id])
+    vehicule  Vehicle   @relation(fields: [vehiculeId], references: [id])
+
+}
+
+model Stop {
+  id    BigInt @id @default(autoincrement())
+  tripId BigInt
+  longitude Float
+  latitude Float
+  address String
+  activateAt DateTime?
+  departureRoute Route? @relation("departure")
+  arrivalRoute Route? @relation("arrival")
+  trip   Trip   @relation(fields: [tripId], references: [id])
+}
+
+model Route {
+  id    BigInt @id @default(autoincrement())
+  tripId BigInt
+  departureStopId BigInt
+  arrivalStopId BigInt
+  distance Float
+  duration Int
+  price Int
+  deletedAt DateTime?
+  travel Travel?
+  departure   Stop   @relation(name: "departure", fields: [departureStopId], references: [id])
+  arrival   Stop   @relation(name: "arrival", fields: [arrivalStopId], references: [id])
+  trip   Trip   @relation(fields: [tripId], references: [id])
+}
+
+model Travel {
+  id     BigInt @id @default(autoincrement())
+  userId     Int
+  routeId BigInt
+  places Int
+  status Int
+  createdAt DateTime
+  startedAt DateTime?
+  finishedAt DateTime?
+  driverRating Int
+  passengerRating Int
+  operations Operation[]
+  user   User   @relation(fields: [userId], references: [id])
+  route   Route   @relation(fields: [routeId], references: [id])
+}
+
+model Operation {
+    id     BigInt @id @default(autoincrement())
+    travelId BigInt 
+    userId Int
+    type String
+    method String
+    amount Int
+    createdAt DateTime
+    validatedAt DateTime?
+    status Int
+    travel Travel   @relation(fields: [travelId], references: [id])
+    user   User   @relation(fields: [userId], references: [id])
+}
+
+model Status {
+  number Int @id
+  value String
+  description String
+  createdAt DateTime @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
+}
+
+model Historic {
+    id     BigInt @id @default(autoincrement())
+    model String
+    rowId BigInt
+    action String
+    userId Int
+    createdAt DateTime @default(now())
+    user   User   @relation(fields: [userId], references: [id])
+}
+
+model Publication {
+    id     BigInt @id @default(autoincrement())
+    title String
+    message String
+    icon String?
+    sound String?
+    picture String?
+    data Json?
+    senderId Int
+    createdAt DateTime @default(now())
+    user   User   @relation(fields: [senderId], references: [id])
+    notications Notification[]
+}
+
+model  Notification{
+  publicationId BigInt
+  receiverId Int
+  createdAt DateTime @default(now())
+  seenAt DateTime?
+  status Int
+  publication   Publication   @relation(fields: [publicationId], references: [id])
+  user   User   @relation(fields: [receiverId], references: [id])
+  @@id([publicationId, receiverId])
+}

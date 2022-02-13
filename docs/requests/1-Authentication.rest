@@ -1,0 +1,151 @@
+### Sign up
+
+#### Login with phone number
+POST http://localhost:8080/api/auth/send-otp HTTP/1.1
+content-type: application/json
+
+{
+    "phoneNumber": "+22892942601"
+}
+
+
+#### Confirm OTP
+POST http://localhost:8080/api/auth/verify-otp HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZU51bWJlciI6IisyMjg5Mjk0MjYwMSIsImlhdCI6MTY0NDQzODg5N30.-U78tzIUlHCYFeAFUFfrMvo1R7NIDi7FJoIAesNge84
+content-type: application/json
+
+{
+    "otp": "612860",
+    "device": {
+        "id": "502A26A3-497E-41B9-9F64-E728AAFFF547",
+        "platform": "web",
+        "token": "c_bmxTMHs0iQtrXcznWirlAPA91bHto8JLS3zGixD0kvXYyklZDVC1wssC9fRPFmJY1j0q7dgtu7FKLbdQRMJxC5kAImXqW-Eu7Nv4OUVhKYKuOF73mzCP7cj_v5srckOojnpCU5ve4FFpRCj3w0iNQj0i66_6mxB7"
+    }
+}
+
+### Complete infos
+
+POST http://localhost:8080/api/auth/complete-profile HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDM5MjczNjZ9.Q9gzUovFERK4CbhCyx1asLlwGmc_Iu6-HEh-qtTzUok
+
+{
+    "firstName": "Kode",
+    "lastName": "Sonik",
+    "birthDay":  "1996-01-23",
+    "email": "k0d3.s0n1k@gmail.com",
+    "password": "azertyui"
+}
+
+#### Login with email and password
+POST http://localhost:8080/api/auth/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "k0d3.s0n1k@gmail.com",
+    "password": "azertyui" 
+}
+
+
+### Complete 
+POST http://localhost:8080/api/auth/register HTTP/1.1
+content-type: application/json
+
+{
+    "email": "k0d3.s0n1k@gmail.com",
+    "phoneNumber": "+22892942601",
+    "firstName": "Kode",
+    "lastName": "Sonik",
+    "birthDay":  "1996-01-23", 
+    "password": "azertyui"
+}
+
+
+### Get profile
+GET  http://localhost:8080/api/auth/profile HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6InVzZXIiLCJpYXQiOjE2NDM5MzI0MjF9.1AyBcLQp16GGz94P9QF50rKAM8WGilNXP65_oYV1ujk
+
+###
+POST http://localhost:8080/api/auth/edit-profile HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6InVzZXIiLCJpYXQiOjE2NDM5MzI0MjF9.1AyBcLQp16GGz94P9QF50rKAM8WGilNXP65_oYV1ujk
+
+{
+    "firstName": "Ko",
+    "lastName": "Sonik",
+    "birthDay":  "1996-01-23"
+}
+
+####
+
+POST /api/auth/edit-avatar HTTP/1.1
+Host: localhost:8080
+Accept: application/json
+Content-Type: multipart/form-data; boundary=MyBoundary
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6InVzZXIiLCJpYXQiOjE2NDQwMjE4NDd9.7n8ASmh425u-AlkaZGXahJT7N8qm745bxzOk7bbi0dg
+
+--MyBoundary
+Content-Disposition: form-data; name="avatar"; filename="1.png"
+Content-Type: image/png
+
+< ./logo.png
+--MyBoundary
+Content-Disposition: form-data; name="ProspectId"
+
+1
+--MyBoundary--
+
+
+### Logout
+POST http://localhost:8080/api/auth/logout HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6InVzZXIiLCJpYXQiOjE2NDM5MzI0MjF9.1AyBcLQp16GGz94P9QF50rKAM8WGilNXP65_oYV1ujk
+
+
+
+### Change password
+POST http://localhost:8080/api/auth/new-password HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6InVzZXIiLCJpYXQiOjE2NDQwMjE0MTd9.XefZbtk2eiJiqKfZ3IcGQWYTkUYwynepppSZaU_emrE
+content-type: application/json
+
+{
+    "password": "azertyui"
+}
+
+
+### Forgot password
+POST http://localhost:8080/api/auth/forgot-password HTTP/1.1
+content-type: application/json
+
+{
+    "email": "k0d3.s0n1k@gmail.com"
+}
+
+
+
+### Change email
+POST http://localhost:8080/api/auth/new-email HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6InVzZXIiLCJpYXQiOjE2NDQwMjExODB9.fL_kag5wZ6b0qWv-4IZs04yCfh5ynrxLVtEwlijCRbg
+content-type: application/json
+
+{
+    "email": "k0d3.s0n1k@gmail.com"
+}
+
+### Change phoneNUmber
+POST http://localhost:8080/api/auth/new-phonenumber HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6InVzZXIiLCJpYXQiOjE2NDQwMjE0NTd9.7mBvCKYS4YYuiiKzbjXm5_SYkmpCG73085IFF8BGKPY
+content-type: application/json
+
+{
+        "phoneNumber": "+22892942601"
+}
+
+
+### Delete account
+POST http://localhost:8080/api/auth/delete-account HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6InVzZXIiLCJpYXQiOjE2NDQwMjE0NTd9.7mBvCKYS4YYuiiKzbjXm5_SYkmpCG73085IFF8BGKPY
+content-type: application/json
+
+{
+        "deletionReport": "Your application is very bad!!!! I can't use this sh*t!"
+}

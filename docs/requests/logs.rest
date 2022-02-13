@@ -1,0 +1,12 @@
+### Get All 
+GET http://localhost:8080/api/logs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ0NDQxMzU2fQ.Bo8jifrtBIuiGoKGrjHbhMd8KdNBl7T563b7QuSAZJQ
+lang: fr
+
+### Get by user id
+GET http://localhost:8080/api/logs/6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ0NDQxMzU2fQ.Bo8jifrtBIuiGoKGrjHbhMd8KdNBl7T563b7QuSAZJQ
+
+### Download logs file
+GET http://localhost:8080/api/logs-download
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ0NDQxMzU2fQ.Bo8jifrtBIuiGoKGrjHbhMd8KdNBl7T563b7QuSAZJQ

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Upload-avatar</title>
+</head>
+<body>
+    <style type="text/css">
+        #preview img{
+           margin: 5px;
+        }
+        </style>
+        <form method='post' action='' enctype="multipart/form-data">
+           <input type="file" id='files' name="avatar" multiple><br>
+           <input type="button" id="submit" value='Upload'>
+        </form>
+        
+        <!-- Preview -->
+        <div id='preview'></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+        <script src="./upload.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+### Get All 
+GET http://localhost:8080/api/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6InVzZXIiLCJpYXQiOjE2NDQwMjE4NDd9.7n8ASmh425u-AlkaZGXahJT7N8qm745bxzOk7bbi0dg
+
+
+### Get by id
+GET http://localhost:8080/api/user/6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6InVzZXIiLCJpYXQiOjE2NDQwMjE4NDd9.7n8ASmh425u-AlkaZGXahJT7N8qm745bxzOk7bbi0dg
+
+
+### Add
+POST http://localhost:8080/api/user HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ0NDQxMzU2fQ.Bo8jifrtBIuiGoKGrjHbhMd8KdNBl7T563b7QuSAZJQ
+content-type: application/json
+
+{
+    "email": "josephtagba@gmail.com",
+    "phoneNumber": "+22890902601",
+    "firstName": "Tagba",
+    "lastName": "Joseph",
+    "birthDay":  "1994-05-01", 
+    "role": "admin"
+}
+
+### edit
+PATCH http://localhost:8080/api/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ0NDQxMzU2fQ.Bo8jifrtBIuiGoKGrjHbhMd8KdNBl7T563b7QuSAZJQ
+content-type: application/json
+
+{
+    "id": 6,
+    "lastName": "Kode",
+    "firstName":  "Sonik" 
+}
+
+
+### Block account
+PATCH http://localhost:8080/api/block-user 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ0NDQxMzU2fQ.Bo8jifrtBIuiGoKGrjHbhMd8KdNBl7T563b7QuSAZJQ
+content-type: application/json
+
+{
+    "id": 4
+}
+
+
+### Unlock user account
+PATCH http://localhost:8080/api/unblock-user 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ0NDQxMzU2fQ.Bo8jifrtBIuiGoKGrjHbhMd8KdNBl7T563b7QuSAZJQ
+content-type: application/json
+
+{
+    "id": 4
+}
+
+### delete
+DELETE http://localhost:8080/api/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ0NDQxMzU2fQ.Bo8jifrtBIuiGoKGrjHbhMd8KdNBl7T563b7QuSAZJQ
+content-type: application/json
+
+{
+    "id": 8
+}
+
+
+### Get in trash 
+GET http://localhost:8080/api/deleted-user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ0NDQxMzU2fQ.Bo8jifrtBIuiGoKGrjHbhMd8KdNBl7T563b7QuSAZJQ
+
+
+### Get in trash 
+GET http://localhost:8080/api/deleted-user/8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ0NDQxMzU2fQ.Bo8jifrtBIuiGoKGrjHbhMd8KdNBl7T563b7QuSAZJQ
+
+### Restore
+PATCH http://localhost:8080/api/restore-user HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ0NDQxMzU2fQ.Bo8jifrtBIuiGoKGrjHbhMd8KdNBl7T563b7QuSAZJQ
+content-type: application/json
+lang: fr
+
+{
+    "id": 8
+}
+
+####
+
+PATCH /api/user-avatar HTTP/1.1
+Host: localhost:8080
+Accept: application/json
+Content-Type: multipart/form-data; boundary=MyBoundary
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQ0NDQxMzU2fQ.Bo8jifrtBIuiGoKGrjHbhMd8KdNBl7T563b7QuSAZJQ
+
+--MyBoundary
+Content-Disposition: form-data; name="avatar"; filename="1.png"
+Content-Type: image/png
+
+< ./logo.png
+--MyBoundary
+Content-Disposition: form-data; name="id"
+Content-Type: number
+
+8
+--MyBoundary--
+
