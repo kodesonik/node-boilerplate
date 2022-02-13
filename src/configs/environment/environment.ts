@@ -1,5 +1,4 @@
 import dotenv from 'dotenv'
-import path from 'path'
 dotenv.config()
 
 
@@ -8,10 +7,10 @@ export default {
     port: process.env.PORT || 8080,
     lang: {
         default: 'en',
-        path: path.join(__dirname, '../../../languages/')
+        path: 'languages/'
     },
     logs: {
-        file: path.join(__dirname, '../../../user-logs/data.xlsx')
+        file:  'user-logs/data.xlsx'
     },
     db: {
         softDelete: true
