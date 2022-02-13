@@ -5,6 +5,7 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "allowJs": true,
+    "resolveJsonModule": true,
     "importHelpers": true,
     "alwaysStrict": false,
     "sourceMap": true,
@@ -20,7 +21,6 @@
   "include": [
     "src/**/*",
     "src/**/*.json",
-    "src/**/*.ejs",
     "src/**/*.xlsx"
   ],
   "exclude": [
