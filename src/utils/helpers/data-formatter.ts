@@ -4,7 +4,7 @@ import { LanguageManager } from '.'
 import { env } from '../../configs/environment'
 
 export default class DataFormatter {
-    static viewsFolder = '../../views/'
+    static viewsFolder = '../../../views/'
     static async ejsToHtml(file, params, lang?) {
         const _this = DataFormatter
          params  =  _this.translateParams(params, lang)
