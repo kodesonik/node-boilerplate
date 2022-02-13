@@ -8,10 +8,10 @@ export default {
     port: process.env.PORT || 8080,
     lang: {
         default: 'en',
-        path: path.join(__dirname, '../languages/')
+        path: path.join(__dirname, '../../../languages/')
     },
     logs: {
-        file: path.join(__dirname, '../../logs/data.xlsx')
+        file: path.join(__dirname, '../../../user-logs/data.xlsx')
     },
     db: {
         softDelete: true
