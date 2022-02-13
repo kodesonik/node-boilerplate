@@ -6,7 +6,7 @@
     "esModuleInterop": true,
     "allowJs": true,
     "importHelpers": true,
-    "alwaysStrict": true,
+    "alwaysStrict": false,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,

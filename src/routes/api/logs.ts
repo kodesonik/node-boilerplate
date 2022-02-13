@@ -1,7 +1,8 @@
 import express from "express"
 import { expressRouterAdapter } from "../../configs/adapters"
 import { adminCheck, authCheck, langCheck } from "../../configs/middlewares"
-import { getLogsController, getUserLogsController } from "../../controllers/logs"
+import { getLogsController, getUserLogsController } from "../../controllers/userlogs"
+
 
 export default () => { 
     const router = express.Router()

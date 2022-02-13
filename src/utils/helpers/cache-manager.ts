@@ -1,5 +1,6 @@
 import { promisify } from "util"
 import redis from "redis"
+import { env } from "../../configs/environment"
 
 export default class CacheManager {
     static client
@@ -8,7 +9,7 @@ export default class CacheManager {
    }
 
    static connect() {
-    CacheManager.client = redis.createClient()
+    CacheManager.client = redis.createClient({ host: env.redis.host, password: env.redis.password, port: env.redis.port})
     CacheManager.client.on("error", function(error) {
         console.error('redis connection failed ', error);
       })    
