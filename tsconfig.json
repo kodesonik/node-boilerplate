@@ -18,7 +18,10 @@
     "strictNullChecks": false
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "src/**/*.json",
+    "src/**/*.ejs",
+    "src/**/*.xlsx"
   ],
   "exclude": [
     "src/**/*.spec.ts",

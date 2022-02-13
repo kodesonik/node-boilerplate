@@ -1,7 +1,7 @@
 ### Sign up
 
 #### Login with phone number
-POST http://localhost:8080/api/auth/send-otp HTTP/1.1
+POST https://molory.herokuapp.com/api/auth/send-otp HTTP/1.1
 content-type: application/json
 
 {
