@@ -40,7 +40,7 @@ export default class LogManager {
     static async read() {
         const file = reader.readFile(env.logs.file)
         if (!file) return []
-        let data = []
+        const data = []
         const sheets = [...file.SheetNames, 'home']
         for (let i = 0; i < sheets.length; i++) {
             const temp = reader.utils.sheet_to_json(

@@ -9,7 +9,7 @@ export default interface Log {
     phoneNumber?: string
     email?: string
     path: string
-    model: String
+    model: string
     modelId: string
     action: Action
     description: string

@@ -4,9 +4,6 @@ import { env } from "../../configs/environment"
 
 export default class CacheManager {
     static client
-   constructor() {
-    
-   }
 
    static connect() {
     CacheManager.client = redis.createClient({ host: env.redis.host, password: env.redis.password, port: env.redis.port})

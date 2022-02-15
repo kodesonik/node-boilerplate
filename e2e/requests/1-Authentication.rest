@@ -10,12 +10,12 @@ content-type: application/json
 
 
 #### Confirm OTP
-POST http://localhost:8080/api/auth/verify-otp HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZU51bWJlciI6IisyMjg5Mjk0MjYwMSIsImlhdCI6MTY0NDQzODg5N30.-U78tzIUlHCYFeAFUFfrMvo1R7NIDi7FJoIAesNge84
+POST https://molory.herokuapp.com/api/auth/verify-otp HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZU51bWJlciI6IisyMjg5Mjk0MjYwMSIsImlhdCI6MTY0NDc5NjM5N30.4FErYVDLxjyLLWrBnESV21nADOVTaIzar7DLAUvIuA0
 content-type: application/json
 
 {
-    "otp": "612860",
+    "otp": "222460",
     "device": {
         "id": "502A26A3-497E-41B9-9F64-E728AAFFF547",
         "platform": "web",
@@ -27,7 +27,7 @@ content-type: application/json
 
 POST http://localhost:8080/api/auth/complete-profile HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDM5MjczNjZ9.Q9gzUovFERK4CbhCyx1asLlwGmc_Iu6-HEh-qtTzUok
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InVzZXIiLCJpYXQiOjE2NDQ3OTY5ODV9.naXPUpowL3-SoDC_eHSN5Fximi7v82g8PH0pZTgO6iw
 
 {
     "firstName": "Kode",

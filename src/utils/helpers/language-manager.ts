@@ -5,7 +5,7 @@ export default class LanguageManager {
 
     static translate(lang: string, _str: string, params = {}): string {
         if(!lang) lang = env.lang.default
-        let self = LanguageManager
+        const self = LanguageManager
         const str = _str.split('.')
         const jsonFile = env.lang.path + lang + '.json'
         const langData = fs.readFileSync(jsonFile)
@@ -24,8 +24,8 @@ export default class LanguageManager {
         const self = LanguageManager
         if (self.size(params) > 0) {
             let i = 1
-            for (let key in params) {
-                let _key = new RegExp(':' + key, 'g')
+            for (const key in params) {
+                const _key = new RegExp(':' + key, 'g')
                 str = str.replace(_key, params[key])
                 if (i == self.size(params)) {
                     return str
@@ -38,9 +38,9 @@ export default class LanguageManager {
 
 
     private static size(obj) {
-        var size = 0, key
+        let size = 0, key
         for (key in obj) {
-            if (obj.hasOwnProperty(key)) size++
+            if (Object.prototype.hasOwnProperty.call(obj, key)) size++
         }
         return size
     }

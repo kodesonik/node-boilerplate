@@ -3,9 +3,6 @@ import { env } from '../../configs/environment'
 
 export default class Mailer {
     static transporter
-    constructor() {
-    
-    }
 
     static connect() {
         Mailer.transporter = nodemailer.createTransport({

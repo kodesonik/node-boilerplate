@@ -13,7 +13,7 @@ export default function makeSignInWithEmailAndPassword({
     }: any = {}) {
         if (!email) throw new MissingParamError('email')
         if (!password) throw new MissingParamError('password')
-        let user = await userDb.findFirst({ where: { email }, select: { id: true, role: true, firstName: true, lastName: true, phoneNumber: true, birthDay: true, email: true, emailVerifiedAt: true, password: true, createdAt: true }})
+        const user = await userDb.findFirst({ where: { email }, select: { id: true, role: true, firstName: true, lastName: true, phoneNumber: true, birthDay: true, email: true, emailVerifiedAt: true, password: true, createdAt: true }})
         if (!user) throw new InvalidParamError('email')
         if (!user.emailVerifiedAt) throw new Error('Email not verified!')
         if (! await comparePasswords({ hash: user.password, password })) throw new InvalidParamError('password')

@@ -1,9 +1,7 @@
 import { Action, IHttpRequest, IHttpResponse, Log, LogStatus } from "../../core/conventions";
 import { HttpResponse, LogManager } from "../../utils/helpers";
 
-export default function makeGetLogsController({
-
-}) {
+export default function makeGetLogsController() {
     return async function getLogsController(request: IHttpRequest): Promise<IHttpResponse> {
         const { id, lastName, firstName } = request.ref,
             lang = request.lang,

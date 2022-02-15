@@ -12,7 +12,6 @@
     "@babel/preset-typescript": "^7.16.0",
     "@types/jest": "~27.0.2",
     "@types/node": "~16.11.6",
-    "@types/swagger-ui-express": "^4.1.3",
     "@typescript-eslint/eslint-plugin": "~5.3.0",
     "@typescript-eslint/parser": "~5.3.0",
     "eslint": "~8.1.0",
@@ -33,6 +32,7 @@
     "start": "node dist/index.js",
     "start:dev": "nodemon --config nodemon.json src/index.ts",
     "clean": "rimraf coverage build tmp",
+    "prebuild": "npm run lint",
     "build": "tsc -p tsconfig.release.json",
     "build:watch": "tsc -w -p tsconfig.release.json",
     "lint": "eslint . --ext .ts,.tsx",
@@ -44,8 +44,8 @@
     "test:coveralls": "npm run test:ci && coveralls < coverage/lcov.info",
     "initdb:dev": "npx prisma migrate dev --name init",
     "migrate:dev": "npx prisma migrate dev",
-    "migrate:prod":"npx prisma migrate resolve",
-    "model":"npx prisma db push"
+    "migrate:prod": "npx prisma migrate resolve",
+    "model": "npx prisma db push"
   },
   "author": "Kode Sonik <k0d3.s0n1k@gmail.com>",
   "license": "Apache-2.0",
@@ -64,8 +64,6 @@
     "node-fetch": "^2.6.1",
     "nodemailer": "^6.7.0",
     "redis": "^3.1.2",
-    "swagger-ui-express": "^4.3.0",
-    "ts-openapi": "^1.0.3",
     "tslib": "~2.3.1",
     "validator": "^13.7.0",
     "xlsx": "^0.18.0"
