@@ -31,11 +31,11 @@ export default function makeSetProfile ({
         const data: any = { firstName, lastName, birthDay, profileCompletedAt: new Date(), language: lang }
         if (email) {
             if (!isValidEmail({ email }))  throw new InvalidParamError('email')
+            if (!password) throw new MissingParamError('password')
             data.email = email
             const token = await generateToken({ email })
             await saveTmpToken({ token })
             await askToConfirmEmail({ email, token, firstName, lang })
-            if (!password) throw new MissingParamError('password')
             data.password = await hashPassword({ password })
         }
         

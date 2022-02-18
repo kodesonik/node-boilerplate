@@ -12,21 +12,21 @@ export default async (req, res, next) => {
          res.status(httpResponse.statusCode).json(httpResponse.body) 
     } else {
         const ref = await TokenManager.verify(token)
-        // console.log('ref: ', ref)  
         if (!ref) {
             httpResponse = HttpResponse.badRequest(new InvalidParamError('token'), req.params.lang)
             res.status(httpResponse.statusCode).json(httpResponse.body) 
         } else {
-            const tokenExists = await CacheManager.findInArray('tokens', token)
-            if (tokenExists === undefined || tokenExists === null) {
+            const tokenIndex = await CacheManager.findInArray('tokens', token)
+            if (tokenIndex === undefined || tokenIndex === null) {
                 httpResponse = HttpResponse.forbiddenError(new ExpiredParamError('token'), req.params.lang)
                 res.status(httpResponse.statusCode).json(httpResponse.body) 
             } else {  
                 req.params.ref = ref
                 req.params.token = token
                 const userDb = new UserDb()
-                const { lastName, firstName, role,  blockedAt } = await userDb.findFirst({ where: { id: ref.id }, select: { lastName: true, firstName: true, blockedAt: true }})
+                const { lastName, firstName, role,  blockedAt } = await userDb.findFirst({ where: { id: ref.id }, select: { lastName: true, firstName: true, role: true, blockedAt: true }})
                 if (role !== ref.role) {
+                    CacheManager.removetAt('tokens', token);
                     httpResponse = HttpResponse.forbiddenError(new ExpiredParamError('token'), req.params.lang)
                     res.status(httpResponse.statusCode).json(httpResponse.body)
                 } else {

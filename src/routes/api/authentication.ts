@@ -30,7 +30,7 @@ export default () => {
     const router = express.Router()
     router.post('/send-otp', langCheck, expressRouterAdapter(sendOtpController))
     router.post('/verify-otp', langCheck, tmpAuthCheck, expressRouterAdapter(verifyOtpController))
-    router.post('/complete-profile', langCheck,langCheck, authCheck, expressRouterAdapter(completeInfosController))
+    router.post('/complete-profile', langCheck, authCheck, expressRouterAdapter(completeInfosController))
     router.get('/confirm-email', langCheck, queryParser, expressRouterAdapter(confirmEmailController, 'html'))
     router.post('/login', langCheck, expressRouterAdapter(loginController))
     router.post('/register', langCheck, expressRouterAdapter(registerController))

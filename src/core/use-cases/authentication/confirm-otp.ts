@@ -45,7 +45,8 @@ export default function makeConfirmOtp({
                         password: ""
                     }
                 })
-            } else await userDb.updateOne({ where: { id: user.id }, data: { phoneNumberVerifiedAt } })
+            } else user = await userDb.updateOne({ where: { id: user.id }, data: { phoneNumberVerifiedAt } })
+            console.log(user)
             const savedDevice = await deviceDb.findFirst({ where: { id: device.id, userId: user.id } })
             if (!savedDevice) await deviceDb.insertOne({
                 data: {
