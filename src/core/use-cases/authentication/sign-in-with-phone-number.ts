@@ -1,4 +1,4 @@
-import { ServerError, MissingParamError } from "../../../utils/errors"
+import { ServerError, MissingParamError, InvalidParamError } from "../../../utils/errors"
 
 export default function makeSignInWithPhoneNumber({
     generateOtp,
@@ -12,6 +12,7 @@ export default function makeSignInWithPhoneNumber({
         phoneNumber
     }: any = {}) {
         if (!phoneNumber) throw new MissingParamError('phoneNumber')
+        if (phoneNumber.charAt(0) !== '+') throw new InvalidParamError('phoneNumber')
         const otp = await generateOtp()
         const token = await generateToken({ phoneNumber })
         await saveTmpToken({ token })
