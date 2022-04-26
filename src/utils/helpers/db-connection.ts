@@ -3,12 +3,12 @@ import { PrismaClient } from "@prisma/client";
 export default class DbConnection{
     static prisma
     static async connect(): Promise<PrismaClient> {
-         this.prisma = new PrismaClient()
-        await this.prisma.$connect()
-        return this.prisma
+         DbConnection.prisma = new PrismaClient()
+        await DbConnection.prisma.$connect()
+        return DbConnection.prisma
     }
 
     static async disconnect() {
-        await this.prisma.$disconnect()
+        await DbConnection.prisma.$disconnect()
     }
 }

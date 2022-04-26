@@ -1,11 +1,11 @@
-import { PrismaClient } from "@prisma/client"
-import { env } from "../configs/environment";
+import { env } from "../configs/environment"
+import { DbConnection } from "../utils/helpers"
 
 export default class Query <T> {
     collection
     constructor(collectionName) {
-        const prisma = new PrismaClient()
-        this.collection = prisma[collectionName];
+        const prisma = DbConnection.prisma
+        this.collection = prisma[collectionName]
     }
 
     async findMany({ 
